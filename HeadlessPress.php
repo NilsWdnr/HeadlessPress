@@ -30,4 +30,16 @@ function remove_frontend()
     }
 }
 
+function menu_init()
+{
+    echo "<h1>Hello World!</h1>";
+}
+
+function setup_menu_page()
+{
+    add_menu_page( 'API settings', 'API settings', 'manage_options', 'HeadlessPress_api_settings', 'menu_init','dashicons-rest-api' );
+}
+
+
 add_action('after_setup_theme', 'remove_frontend');
+add_action('admin_menu','setup_menu_page');
