@@ -32,14 +32,15 @@ function remove_frontend()
 
 function menu_init()
 {
-    echo "<h1>Hello World!</h1>";
+    require_once('inc/settingsTemplate.php');
 }
 
 function setup_menu_page()
 {
-    add_menu_page( 'API settings', 'API settings', 'manage_options', 'HeadlessPress_api_settings', 'menu_init','dashicons-rest-api' );
-}
+    add_menu_page( 'API settings', 'API settings', 'manage_options', 'API settings', 'menu_init','dashicons-rest-api' );
 
+    register_setting("api_settings", "allow_install_plugins",['default'=>false]);
+}
 
 add_action('after_setup_theme', 'remove_frontend');
 add_action('admin_menu','setup_menu_page');
